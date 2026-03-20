@@ -10,7 +10,7 @@ window.addEventListener('load', () => {
   const wrapper = document.querySelector('.hero-heading-wrapper');
   const magnified = document.querySelector('.hero-heading-magnified');
   if (wrapper && magnified) {
-    const scale = 1.5;
+    const scale = 1.1;
     const radius = 120;
 
     wrapper.addEventListener('mousemove', (e) => {
