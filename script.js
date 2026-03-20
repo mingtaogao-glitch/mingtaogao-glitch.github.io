@@ -9,16 +9,18 @@ window.addEventListener('load', () => {
   // Magnify lens on hero heading
   const wrapper = document.querySelector('.hero-heading-wrapper');
   const magnified = document.querySelector('.hero-heading-magnified');
-  if (wrapper && magnified) {
-    const scale = 1.05;
+  const lensBorder = document.querySelector('.hero-lens-border');
+  if (wrapper && magnified && lensBorder) {
+    const scale = 1.2;
     const radius = 120;
 
     wrapper.addEventListener('mousemove', (e) => {
       const rect = wrapper.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      // Position the clip circle at cursor
       magnified.style.clipPath = 'circle(' + radius + 'px at ' + (x / scale) + 'px ' + (y / scale) + 'px)';
+      lensBorder.style.left = x + 'px';
+      lensBorder.style.top = y + 'px';
     });
 
     wrapper.addEventListener('mouseleave', () => {

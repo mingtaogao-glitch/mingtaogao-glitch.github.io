@@ -196,12 +196,29 @@ h1, h2, h3, h4 {
   left: 0;
   width: 100%;
   transform-origin: 0 0;
-  transform: scale(1.05);
+  transform: scale(1.2);
   clip-path: circle(0px at 0px 0px);
   transition: clip-path 0.15s ease;
   pointer-events: none;
   z-index: 2;
   background: var(--black);
+}
+
+.hero-lens-border {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  border: 1.5px solid var(--white);
+  pointer-events: none;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.hero-heading-wrapper:hover .hero-lens-border {
+  opacity: 1;
 }
 
 .hero-subtitle {
