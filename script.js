@@ -1,27 +1,52 @@
-// ========== Loader ==========
+// ========== All init on load ==========
 window.addEventListener('load', () => {
+  // Hide loader
   const loader = document.querySelector('.loader');
   setTimeout(() => {
     loader.classList.add('hidden');
   }, 800);
+
+  // Word-by-word hero reveal (after loader hides)
+  const words = document.querySelectorAll('.word-reveal');
+  words.forEach((word, i) => {
+    setTimeout(() => {
+      word.classList.add('revealed');
+    }, 1000 + i * 100);
+  });
+
+  // Hero intro, subtitle, CTA fade in
+  const heroIntro = document.querySelector('.hero-intro');
+  const heroSubtitle = document.querySelector('.hero-subtitle');
+  const heroCta = document.querySelector('.hero-cta');
+
+  if (heroIntro) {
+    setTimeout(() => heroIntro.classList.add('visible'), 600);
+  }
+  if (heroSubtitle) {
+    setTimeout(() => heroSubtitle.classList.add('visible'), 2200);
+  }
+  if (heroCta) {
+    setTimeout(() => heroCta.classList.add('visible'), 2500);
+  }
 });
 
 // ========== Mobile Menu ==========
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 
-menuToggle.addEventListener('click', () => {
-  menuToggle.classList.toggle('active');
-  navLinks.classList.toggle('open');
-});
-
-// Close menu on link click
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    menuToggle.classList.remove('active');
-    navLinks.classList.remove('open');
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('open');
   });
-});
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+}
 
 // ========== Scroll Reveal ==========
 const revealElements = document.querySelectorAll('.reveal');
@@ -74,24 +99,4 @@ window.addEventListener('scroll', () => {
   } else {
     nav.style.background = 'rgba(0, 0, 0, 0.85)';
   }
-});
-
-// ========== Word-by-word hero reveal ==========
-window.addEventListener('load', () => {
-  const words = document.querySelectorAll('.word-reveal');
-  words.forEach((word, i) => {
-    setTimeout(() => {
-      word.classList.add('revealed');
-    }, 900 + i * 80); // starts after loader, 80ms stagger per word
-  });
-});
-
-// ========== Stagger button letter animation ==========
-document.querySelectorAll('.btn').forEach(btn => {
-  btn.addEventListener('mouseenter', () => {
-    btn.style.transform = 'scale(0.964)';
-  });
-  btn.addEventListener('mouseleave', () => {
-    btn.style.transform = 'scale(1)';
-  });
 });
