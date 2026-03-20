@@ -18,7 +18,8 @@ window.addEventListener('load', () => {
       const rect = wrapper.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      magnified.style.clipPath = 'circle(' + radius + 'px at ' + (x / scale) + 'px ' + (y / scale) + 'px)';
+      var clipRadius = radius / scale;
+      magnified.style.clipPath = 'circle(' + clipRadius + 'px at ' + (x / scale) + 'px ' + (y / scale) + 'px)';
       lensGlass.style.left = x + 'px';
       lensGlass.style.top = y + 'px';
     });
