@@ -76,6 +76,16 @@ window.addEventListener('scroll', () => {
   }
 });
 
+// ========== Word-by-word hero reveal ==========
+window.addEventListener('load', () => {
+  const words = document.querySelectorAll('.word-reveal');
+  words.forEach((word, i) => {
+    setTimeout(() => {
+      word.classList.add('revealed');
+    }, 900 + i * 80); // starts after loader, 80ms stagger per word
+  });
+});
+
 // ========== Stagger button letter animation ==========
 document.querySelectorAll('.btn').forEach(btn => {
   btn.addEventListener('mouseenter', () => {
