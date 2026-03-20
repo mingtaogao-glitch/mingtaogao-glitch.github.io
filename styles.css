@@ -754,3 +754,95 @@ h1, h2, h3, h4 {
   0%, 100% { opacity: 0.3; }
   50% { opacity: 1; }
 }
+
+/* ========== Page Header (sub-pages) ========== */
+.page-header {
+  padding: 10rem 2.5rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+/* ========== Active Nav Link ========== */
+.nav-links a.active {
+  opacity: 0.5;
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* ========== Contact Page ========== */
+.contact-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 2.5rem 4rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-page .page-title {
+  margin-bottom: 1.5rem;
+}
+
+.contact-description {
+  color: var(--gray);
+  max-width: 500px;
+  margin-bottom: 3rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.contact-details {
+  margin-top: 4rem;
+  display: flex;
+  gap: 4rem;
+  text-align: left;
+}
+
+.contact-detail-group h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gray);
+  margin-bottom: 0.75rem;
+}
+
+.contact-detail-group a {
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.contact-detail-group a:hover {
+  color: var(--orange);
+}
+
+.contact-social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 8rem 1.5rem 3rem;
+  }
+
+  .contact-page {
+    padding: 6rem 1.5rem 3rem;
+  }
+
+  .contact-details {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
