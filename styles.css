@@ -181,28 +181,30 @@ h1, h2, h3, h4 {
 /* Hero heading - word-by-word reveal */
 .hero-heading {
   font-size: clamp(2.5rem, 6vw, 5rem);
-  line-height: 1.3;
+  line-height: 1.2;
   margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.25em;
 }
 
-.word-reveal {
-  display: inline-flex;
+.hero-heading .word {
+  display: inline-block;
+  height: 1.2em;
   overflow: hidden;
-  padding-bottom: 0.05em;
-  margin-right: 0.15em;
 }
 
-.word-inner {
-  display: block;
-  transform: translateY(120%);
+.hero-heading .word span {
+  display: inline-block;
+  transform: translateY(110%);
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.word-reveal.revealed .word-inner {
+.hero-heading .word.revealed span {
   transform: translateY(0);
 }
 
-.hero-heading .gradient-text .word-inner {
+.hero-heading .word.gradient span {
   background: linear-gradient(135deg, var(--orange), var(--red), var(--blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

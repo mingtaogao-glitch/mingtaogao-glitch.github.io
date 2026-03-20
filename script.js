@@ -7,12 +7,23 @@ window.addEventListener('load', () => {
   }, 800);
 
   // Word-by-word hero reveal (after loader hides)
-  const words = document.querySelectorAll('.word-reveal');
-  words.forEach((word, i) => {
-    setTimeout(() => {
-      word.classList.add('revealed');
-    }, 1000 + i * 100);
-  });
+  const heading = document.querySelector('.hero-heading');
+  if (heading) {
+    const text = heading.textContent;
+    const gradientWords = (heading.dataset.gradient || '').split(',');
+    heading.innerHTML = text.trim().split(/\s+/).map(word => {
+      const clean = word.replace(/[^a-zA-Z]/g, '');
+      const isGradient = gradientWords.includes(clean);
+      return '<span class="word' + (isGradient ? ' gradient' : '') + '"><span>' + word + '</span></span>';
+    }).join('');
+
+    const wordEls = heading.querySelectorAll('.word');
+    wordEls.forEach((el, i) => {
+      setTimeout(() => {
+        el.classList.add('revealed');
+      }, 1000 + i * 80);
+    });
+  }
 
   // Hero intro, subtitle, CTA fade in
   const heroIntro = document.querySelector('.hero-intro');
