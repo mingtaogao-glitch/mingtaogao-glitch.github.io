@@ -178,37 +178,29 @@ h1, h2, h3, h4 {
   transform: translateY(0);
 }
 
-/* Hero heading - word-by-word reveal */
+/* Hero heading - magnify lens effect */
+.hero-heading-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+  cursor: default;
+}
+
 .hero-heading {
   font-size: clamp(2.5rem, 6vw, 5rem);
-  line-height: 1.2;
-  margin-bottom: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 0.25em;
+  line-height: 1.15;
 }
 
-.hero-heading .word {
-  display: inline-block;
-  height: 1.2em;
-  overflow: hidden;
-}
-
-.hero-heading .word span {
-  display: inline-block;
-  transform: translateY(110%);
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-heading .word.revealed span {
-  transform: translateY(0);
-}
-
-.hero-heading .word.gradient span {
-  background: linear-gradient(135deg, var(--orange), var(--red), var(--blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.hero-heading-magnified {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform-origin: 0 0;
+  transform: scale(1.5);
+  clip-path: circle(0px at 0px 0px);
+  transition: clip-path 0.15s ease;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .hero-subtitle {

@@ -6,22 +6,23 @@ window.addEventListener('load', () => {
     loader.classList.add('hidden');
   }, 800);
 
-  // Word-by-word hero reveal (after loader hides)
-  const heading = document.querySelector('.hero-heading');
-  if (heading) {
-    const text = heading.textContent;
-    const gradientWords = (heading.dataset.gradient || '').split(',');
-    heading.innerHTML = text.trim().split(/\s+/).map(word => {
-      const clean = word.replace(/[^a-zA-Z]/g, '');
-      const isGradient = gradientWords.includes(clean);
-      return '<span class="word' + (isGradient ? ' gradient' : '') + '"><span>' + word + '</span></span>';
-    }).join('');
+  // Magnify lens on hero heading
+  const wrapper = document.querySelector('.hero-heading-wrapper');
+  const magnified = document.querySelector('.hero-heading-magnified');
+  if (wrapper && magnified) {
+    const scale = 1.5;
+    const radius = 120;
 
-    const wordEls = heading.querySelectorAll('.word');
-    wordEls.forEach((el, i) => {
-      setTimeout(() => {
-        el.classList.add('revealed');
-      }, 1000 + i * 80);
+    wrapper.addEventListener('mousemove', (e) => {
+      const rect = wrapper.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      // Position the clip circle at cursor
+      magnified.style.clipPath = 'circle(' + radius + 'px at ' + (x / scale) + 'px ' + (y / scale) + 'px)';
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+      magnified.style.clipPath = 'circle(0px at 0px 0px)';
     });
   }
 
